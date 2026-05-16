@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Plan System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar">
+        <a class="brand" href="#home">Solar Plan System</a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#admin">Admin</a>
+            <a href="#history">History</a>
+            <a href="#statistics">Statistics</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="eyebrow">Clean energy planning made simple</p>
+            <h1>Solar Plan System</h1>
+            <p class="subtitle">Design a reliable solar setup by calculating energy use, panel size, battery capacity, inverter size, and estimated cost.</p>
+            <div class="hero-stats">
+                <span>Fast Calculation</span>
+                <span>Smart Recommendation</span>
+                <span>Beautiful Records</span>
+            </div>
+        </div>
+
+        <div class="calculator-card">
+            <h2>Home Appliance Calculation</h2>
+            <form id="solarForm">
+                <p class="form-note">Fill only the appliances available in the home. Empty rows will not be counted.</p>
+
+                <div class="appliance-table">
+                    <div class="appliance-head">
+                        <span>Appliance</span>
+                        <span>Qty</span>
+                        <span>Watt</span>
+                        <span>Hours</span>
+                    </div>
+
+                    <div class="appliance-row" data-name="Water Heater">
+                        <label>Water Heater</label>
+                        <input type="number" class="quantity" min="0" placeholder="0">
+                        <input type="number" class="watt" min="0" placeholder="1500">
+                        <input type="number" class="hours" min="0" step="0.5" placeholder="1">
+                    </div>
+
+                    <div class="appliance-row" data-name="Air Conditioner">
+                        <label>Air Conditioner</label>
+                        <input type="number" class="quantity" min="0" placeholder="0">
+                        <input type="number" class="watt" min="0" placeholder="1200">
+                        <input type="number" class="hours" min="0" step="0.5" placeholder="6">
+                    </div>
+
+                    <div class="appliance-row" data-name="Ceiling Fan">
+                        <label>Ceiling Fan</label>
+                        <input type="number" class="quantity" min="0" placeholder="0">
+                        <input type="number" class="watt" min="0" placeholder="75">
+                        <input type="number" class="hours" min="0" step="0.5" placeholder="8">
+                    </div>
+
+                    <div class="appliance-row" data-name="Bulb">
+                        <label>Bulb</label>
+                        <input type="number" class="quantity" min="0" placeholder="0">
+                        <input type="number" class="watt" min="0" placeholder="15">
+                        <input type="number" class="hours" min="0" step="0.5" placeholder="6">
+                    </div>
+
+                    <div class="appliance-row" data-name="Television">
+                        <label>Television</label>
+                        <input type="number" class="quantity" min="0" placeholder="0">
+                        <input type="number" class="watt" min="0" placeholder="120">
+                        <input type="number" class="hours" min="0" step="0.5" placeholder="5">
+                    </div>
+
+                    <div class="appliance-row" data-name="Refrigerator">
+                        <label>Refrigerator</label>
+                        <input type="number" class="quantity" min="0" placeholder="0">
+                        <input type="number" class="watt" min="0" placeholder="200">
+                        <input type="number" class="hours" min="0" step="0.5" placeholder="10">
+                    </div>
+
+                    <div class="appliance-row" data-name="Electric Iron">
+                        <label>Electric Iron</label>
+                        <input type="number" class="quantity" min="0" placeholder="0">
+                        <input type="number" class="watt" min="0" placeholder="1000">
+                        <input type="number" class="hours" min="0" step="0.5" placeholder="1">
+                    </div>
+
+                    <div class="appliance-row" data-name="Phone Charger">
+                        <label>Phone Charger</label>
+                        <input type="number" class="quantity" min="0" placeholder="0">
+                        <input type="number" class="watt" min="0" placeholder="10">
+                        <input type="number" class="hours" min="0" step="0.5" placeholder="3">
+                    </div>
+                </div>
+
+                <button type="button" onclick="calculateSolar()">Calculate Solar Plan</button>
+            </form>
+
+            <div class="results" id="results">
+                <h3>Calculation Results</h3>
+                <div class="result-grid">
+                    <p><strong>Total Energy</strong><span><span id="energy"></span> Wh/day</span></p>
+                    <p><strong>Solar Panel Size</strong><span><span id="panel"></span> W</span></p>
+                    <p><strong>Battery Capacity</strong><span><span id="battery"></span> Ah</span></p>
+                    <p><strong>Inverter Size</strong><span><span id="inverter"></span> W</span></p>
+                    <p><strong>Appliances Counted</strong><span id="appliancesCounted"></span></p>
+                    <p class="cost"><strong>Estimated Cost</strong><span>N<span id="cost"></span></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="gallery">
+        <div class="section-heading">
+            <p class="eyebrow">Gallery</p>
+            <h2>Solar System Components</h2>
+        </div>
+        <div class="gallery-grid">
+            <article>
+                <div class="gallery-icon">SP</div>
+                <h3>Solar Panels</h3>
+                <p>Capture sunlight and convert it into usable electrical energy.</p>
+            </article>
+            <article>
+                <div class="gallery-icon">BT</div>
+                <h3>Battery Bank</h3>
+                <p>Stores energy for night use and backup power during outages.</p>
+            </article>
+            <article>
+                <div class="gallery-icon">IV</div>
+                <h3>Inverter</h3>
+                <p>Converts battery power into AC power for home appliances.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="section split-section" id="admin">
+        <div>
+            <p class="eyebrow">Admin</p>
+            <h2>Administrator Overview</h2>
+            <p>The admin area can be used to monitor appliance entries, review cost estimates, and manage planning records for users.</p>
+        </div>
+        <div class="admin-panel">
+            <p><strong>System Status</strong><span>Active</span></p>
+            <p><strong>Calculator Mode</strong><span>Enabled</span></p>
+            <p><strong>Records</strong><span>Ready for History</span></p>
+        </div>
+    </section>
+
+    <section class="section" id="history">
+        <div class="section-heading">
+            <p class="eyebrow">History</p>
+            <h2>Recent Solar Planning History</h2>
+        </div>
+        <div class="history-list" id="historyList">
+            <p>No calculation yet. Fill the home appliances above and calculate a solar plan.</p>
+        </div>
+    </section>
+
+    <section class="section" id="statistics">
+        <div class="section-heading">
+            <p class="eyebrow">Statistics</p>
+            <h2>Energy Planning Statistics</h2>
+        </div>
+        <div class="stats-grid">
+            <div>
+                <span id="statEnergy">0</span>
+                <p>Wh/day</p>
+            </div>
+            <div>
+                <span id="statPanel">0</span>
+                <p>Recommended Watts</p>
+            </div>
+            <div>
+                <span id="statBattery">0</span>
+                <p>Battery Ah</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>Under the Supervision of Mrs Sikirat Kehinde Aina</p>
+    <p>Mohammed Ibrahim Zagam (U21/CPS/1068)</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
